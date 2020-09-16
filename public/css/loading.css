@@ -1,0 +1,19 @@
+/* Loading */
+.loading_hide {
+    display: none;
+}
+.loading_show {
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: table;
+    z-index: 1061;
+    background-color: #FBFBFB;
+}
+
+#loading-logo {
+    display: table-cell;
+    vertical-align:middle;
+}
