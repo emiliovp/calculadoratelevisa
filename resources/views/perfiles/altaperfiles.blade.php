@@ -39,7 +39,7 @@ label.error {
                                 <select class= "form-control campo-requerido" name="area" id ="area">
                                     <option value="">Seleccione...</option>
                                     @foreach($area AS $row)
-                                        <option value="{{$row['id']}}">{{$row["area"]}}</option>
+                                        <option value="{{$row['id']}}">{{$row["cal_area"]}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -59,7 +59,7 @@ label.error {
                                 <select multiple class= "form-control" name="modulos" id ="modulos">
                                     <!-- <option value="">Seleccione...</option> -->
                                     @foreach($modulo AS $row)
-                                        <option value="{{$row['id']}}">{{$row["alias"]}}</option>
+                                        <option value="{{$row['id']}}">{{$row["cal_alias"]}}</option>
                                     @endforeach
                                 </select>
                             </div>

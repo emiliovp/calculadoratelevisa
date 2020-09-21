@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
-use App\FUSUsersSessions;
+use App\CalUsersSessions;
 use Closure;
 
 class DoubleSession
@@ -16,7 +16,7 @@ class DoubleSession
      */
     public function handle($request, Closure $next)
     {
-        $tcsUsers = new FUSUsersSessions;
+        $tcsUsers = new CalUsersSessions;
         $tcsUsersActual = $tcsUsers->validateDoubleSession();
         
         if(Auth::user()->created_at == $tcsUsersActual) {

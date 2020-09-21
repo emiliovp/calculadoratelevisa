@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 use Adldap\Laravel\Facades\Adldap;
-use App\LogBookMovements;
-use App\FusUserLogin;
-use App\PerfilesModel;
+use App\CalCalLogBookMovements;
+use App\CalUserLogin;
+use App\Calperfiles;
 use Yajra\Datatables\Datatables;
 class UserController extends Controller
 {
@@ -32,19 +32,19 @@ class UserController extends Controller
             'tipo' => 'vista',
             'id_user' => $idEmployee
         );
-        $bitacora = new LogBookMovements;
+        $bitacora = new CalLogBookMovements;
         $bitacora->guardarBitacora($bit);
         return view('usuarios.usuarios_lista')->with(['alat' => 0]);
     }
     public function anyDAta()
     {
-        $a = new FusUserLogin;
+        $a = new CalUserLogin;
         $idEmployee = $a->getIdByNameUser(Auth::user()->email);
         
         if(!isset($idEmployee)) {
             $idEmployee = null;
         }
-        $a = new FusUserLogin;
+        $a = new CalUserLogin;
         if ($idEmployee['perfil'] == 'root') {
             $data = $a->getUserActiveroot($idEmployee['tipo_user']);
         }else {
@@ -54,7 +54,7 @@ class UserController extends Controller
         return Datatables::of($data)->make(true);
     }
     public function bajaUsr(Request $request){
-        $a = new FusUserLogin;
+        $a = new CalUserLogin;
         $val = $request->post('id');
         $a->bajaUsr($val);
         $idEmployee = getIdUserLogin(Auth::user()->noEmployee);
@@ -68,12 +68,12 @@ class UserController extends Controller
             'tipo' => 'baja',
             'id_user' => $idEmployee
         );
-        $bitacora = new LogBookMovements;
+        $bitacora = new CalLogBookMovements;
         $bitacora->guardarBitacora($data);
         echo true;
     }
     public function setusuario(){
-        $a = new FusUserLogin;
+        $a = new CalUserLogin;
         $b = new PerfilesModel;
         $idEmployee = $a->getIdByNameUser(Auth::user()->email);
 
@@ -107,14 +107,14 @@ class UserController extends Controller
         if($idEmployee == 0) {
             $idEmployee = null;
         }
-        if(FusUserLogin::insert($data)) {
+        if(CalUserLogin::insert($data)) {
             $bit = array(
                 'ip_address' => $this->ip_address_client, 
                 'description' => 'Alta de usuario administrador de fus',
                 'tipo' => 'vista',
                 'id_user' => $idEmployee
             );
-            $bitacora = new LogBookMovements;
+            $bitacora = new CalLogBookMovements;
             $bitacora->guardarBitacora($bit);
             return view('usuarios.usuarios_lista')->with(['alat' => 1]);
         }
@@ -122,7 +122,7 @@ class UserController extends Controller
         return 'false';
     }
     public function getUsr(Request $request){
-        $buscarExistencia = new FusUserLogin;
+        $buscarExistencia = new CalUserLogin;
         $var =$request->get('term', '');
         $dom =$request->get('dom', '');
         $existencia = $buscarExistencia->getUserExisByUsername($var);

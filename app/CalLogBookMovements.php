@@ -4,39 +4,39 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LogBookMovements extends Model
+class CalLogBookMovements extends Model
 {
-    protected $table = 'fus_logbook_movements';
+    protected $table = 'cal_log_movimientos';
     protected $primaryKey = 'id';
     public $timestamps = false;
     
     protected $fillable = [
         "id",
-        "ip_address",
-        "description",
-        "tipo",
+        "cal_ip_address",
+        "cal_descripcion",
+        "cal_tipo",
         "created_at",
-        "fus_user_login_id",
+        "cal_user_login_id"
     ];
 
     public function guardarBitacora($data) {
-        $bitacora = new LogBookMovements;
-        $bitacora->ip_address = $data["ip_address"];
-        $bitacora->description = $data["description"];
-        $bitacora->tipo = $data["tipo"];
-        $bitacora->fus_user_login_id = $data["id_user"];
+        $bitacora = new CalLogBookMovements;
+        $bitacora->cal_ip_address = $data["ip_address"];
+        $bitacora->cal_descripcion = $data["description"];
+        $bitacora->cal_tipo = $data["tipo"];
+        $bitacora->cal_user_login_id = $data["id_user"];
 
         $bitacora->save();
     }
 
     public function movimientos() {
-        $query = LogBookMovements::get()->toArray();
+        $query = CalLogBookMovements::get()->toArray();
  
         return $query;
     }
 
     public function movimientosByRangeDate($dateInit, $dateFish) {
-        $query = LogBookMovements::select(
+        $query = CalLogBookMovements::select(
             'logbook_movements.ip_address',
             'logbook_movements.description',
             'logbook_movements.tipo',

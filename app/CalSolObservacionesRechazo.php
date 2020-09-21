@@ -4,19 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ObservacionPorRechazo extends Model
+class CalSolObservacionesRechazo extends Model
 {
-    protected $table = "fus_observaciones_rechazo";
+    protected $table = "cal_sol_observaciones_rechazo";
     
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'id',
-        'observacion',
-        'tipo',
-        'rel_configuration_fussyswtl_id',
-        'rel_otro_autorizaciones_id',
-        'fus_sysadmin_wtl_id'
+        'cal_observacion',
+        'cal_tipo',
+        'cal_solicitud_id'
     ];
 
     protected $hidden = [];
@@ -34,12 +32,10 @@ class ObservacionPorRechazo extends Model
         // 6 - Seguridad
         // 7 - Sutis
 
-        $observaciones = new ObservacionPorRechazo;
-        $observaciones->observacion = $observacion; 
-        $observaciones->tipo = $tipo;
-        $observaciones->fus_sysadmin_wtl_id = $idFus;
-        $observaciones->rel_configuration_fussyswtl_id = $idConfigApps;
-        $observaciones->rel_otro_autorizaciones_id = $idConfigOtros;
+        $observaciones = new CalSolObservacionesRechazo;
+        $observaciones->cal_observacion = $observacion; 
+        $observaciones->cal_tipo = $tipo;
+        $observaciones->cal_solicitud_id = $idFus;
 
         $observaciones->save();
 
@@ -47,6 +43,6 @@ class ObservacionPorRechazo extends Model
     }
 
     public function getObservacionById($id) {
-        return ObservacionPorRechazo::find($id)->toArray();
+        return CalSolObservacionesRechazo::find($id)->toArray();
     }
 }

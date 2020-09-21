@@ -33,7 +33,7 @@ label.error {
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label for="perfil" class="txt-bold">Nombre del perfil<span style="color: red;">*</span></label>
-                                <input type="text" class="form-control{{ $errors->has('perfil') ? ' is-invalid' : '' }} campo-requerido" value="{{ !empty(old('perfil')) ? old('perfil') : $perfil[0]['perfil'] }}" name="perfil" id="perfil"/>   
+                                <input type="text" class="form-control{{ $errors->has('perfil') ? ' is-invalid' : '' }} campo-requerido" value="{{ !empty(old('perfil')) ? old('perfil') : $perfil[0]['cal_perfil'] }}" name="perfil" id="perfil"/>   
                             </div>   
                             <div class="col-md-6">
                                 <label for="area" class="txt-bold">Área<span style="color: red;">*</span></label>
@@ -43,12 +43,12 @@ label.error {
                                         @php
                                             $selected = "";
                                         @endphp
-                                        @if($perfil[0]['fus_areas_perfiles_id'] == $row['id'])
+                                        @if($perfil[0]['cal_areas_perfiles_id'] == $row['id'])
                                             @php
                                                 $selected = "selected";
                                             @endphp
                                         @endif
-                                        <option {{$selected}} value="{{$row['id']}}">{{$row["area"]}}</option>
+                                        <option {{$selected}} value="{{$row['id']}}">{{$row["cal_area"]}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -80,7 +80,7 @@ label.error {
                                                 @endif
                                             @endforeach
                                         @endif
-                                            <option {{$selected}} value="{{$row['id']}}">{{$row["alias"]}}</option>
+                                            <option {{$selected}} value="{{$row['id']}}">{{$row["cal_alias"]}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -14,7 +14,7 @@ return [
     */
 
     // 'name' => env('APP_NAME', 'Laravel'),
-    'name' => 'Fus Electrónico',
+    'name' => 'Calculadora',
 
     /*
     |--------------------------------------------------------------------------

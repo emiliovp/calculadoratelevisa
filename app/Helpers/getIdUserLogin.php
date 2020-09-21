@@ -1,7 +1,7 @@
 <?php
-    use App\FusUserLogin;
+    use App\CalUserLogin;
     
     function getIdUserLogin($noEmployee){
-        $user = new FusUserLogin;
+        $user = new CalUserLogin;
         return $user->getIdUser($noEmployee);
     }

@@ -9,9 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class FUSUsersSessions extends Authenticatable
+class CalUsersSessions extends Authenticatable
 {
-    protected $table = "fus_users_sessions";
+    protected $table = "cal_user_sessions";
 
     protected $fillable = [
         'id', 'name', 'mail', 'noEmployee', 'useradmin', 'created_at', 'update_at'
@@ -25,12 +25,12 @@ class FUSUsersSessions extends Authenticatable
 
     // Validar no. empleado
     public function validateNumberEmployee($email) {
-        return FUSUsersSessions::where('email', $email)->first();
+        return CalUsersSessions::where('email', $email)->first();
     }
 
     // Validar sesión más actual
     public function validateDoubleSession() {
-        $query = FUSUsersSessions::where([
+        $query = CalUsersSessions::where([
             'email' => Auth::user()->email,
             'created_at' => DB::raw('(SELECT MAX(created_at) FROM fus_users_sessions WHERE email = "'.Auth::user()->email.'")')
         ])

@@ -65,13 +65,13 @@ var buttonCommon = {
         ajax: '{!! route("listaareastabla") !!}',
         columns: [
             {data: 'id', name: 'id'},  
-            {data: 'area', name: 'area'}, 
+            {data: 'cal_area', name: 'cal_area'}, 
             {
                 render: function (data,type,row){
                     var html = '';
                     html = '<div class="row">'+
                             '<div class="col-md-12">'+
-                                '<button class="btn btn-primary btn-block mov-area" id="editmesa" name="editmesa" data-movimiento="editar" data-nomarea="'+row.area+'" data-idarea="'+row.id+'">Editar</button>'+
+                                '<button class="btn btn-primary btn-block mov-area" id="editmesa" name="editmesa" data-movimiento="editar" data-nomarea="'+row.cal_area+'" data-idarea="'+row.id+'">Editar</button>'+
                             '</div>'+
                            '</div>';
 
@@ -258,7 +258,7 @@ var buttonCommon = {
     $(document).on("click", "#guardar", function(){
 
         var nombrearea = $("#nombreArea").val();
-        console.log(nombrearea);
+        
         var mov = $(this).attr("data-movimiento");
         if (nombrearea == '') {
             mostrarError("errmsj_area");

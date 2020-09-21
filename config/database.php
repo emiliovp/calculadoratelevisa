@@ -78,7 +78,7 @@ return [
         'driver' => 'mysql',
         'host' => '10.7.15.205',
         'port' => '3329',
-        'database' => 'portal_pcb', // nombre de la database
+        'database' => 'portal_calculadora', // nombre de la database
         'username' => 'template', // usuario de la database
         'password' => 'eyJpdiI6IjJSQURIOW9aOXdRdmVsSm1vWVJmZnc9PSIsInZhbHVlIjoicE5vNU5tcXlUMGxHTitIcnlxQTFXSTRRQzk5NWVMMCtNZndOUmpnQ2pNTT0iLCJtYWMiOiI3MmNkMDQ5MjJjMDlmNzczODM4MGNmZGNiZDA1YWI4Y2IxMTBlZmUxNWQ0MTVlMjBjNjdlYzk1MmJjYWM1YjI0In0=', // contraseña de la database
         // 'charset' => 'latin1',

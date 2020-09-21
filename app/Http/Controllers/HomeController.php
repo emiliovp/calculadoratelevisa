@@ -29,10 +29,11 @@ class HomeController extends Controller
         if(Auth::user()->useradmin == 1) {
             return view('home');
         } else {
-            if($controlConfigFuseApp->existenciaUsuarioByNoEmpName(Auth::user()->noEmployee, Auth::user()->name) > 0) {
-                return view('home')->with("admonmesas", 1);
-            } 
-            return redirect()->route('fus_lista');
+            // if($controlConfigFuseApp->existenciaUsuarioByNoEmpName(Auth::user()->noEmployee, Auth::user()->name) > 0) {
+            //     return view('home')->with("admonmesas", 1);
+            // } 
+            // return redirect()->route('fus_lista');
+            return view('home');
         }
     }
 }

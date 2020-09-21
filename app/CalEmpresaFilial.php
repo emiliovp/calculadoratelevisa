@@ -5,14 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class EmpresaFilial extends Model
+class CalEmpresaFilial extends Model
 {
-    protected $table="empresa_filial";
+    protected $table="cal_empresa_filial";
 
     protected $fillable = [
         'id', 
-        'nombre', 
-        'alias', 
+        'cal_nombre', 
+        'cal_alias', 
         'created_at', 
         'updated_at'
     ];
@@ -23,14 +23,14 @@ class EmpresaFilial extends Model
     
     public function registrar_emp($nom)
     {
-        $resp = EmpresaFilial::select('id')
-        ->whereRaw("nombre like '%".$nom."%'")
+        $resp = CalEmpresaFilial::select('id')
+        ->whereRaw("cal_nombre like '%".$nom."%'")
         ->get()
         ->toArray();
         if (count($resp) == 0) {
-            $emp = new EmpresaFilial;
-            $emp->nombre = $nom;
-            $emp->alias = $nom;
+            $emp = new CalEmpresaFilial;
+            $emp->cal_nombre = $nom;
+            $emp->cal_alias = $nom;
             $emp->save();
             $data = $emp->id;
         }
@@ -41,7 +41,7 @@ class EmpresaFilial extends Model
     }
 
     public function getEmpresa($id) {
-        $empresa = EmpresaFilial::find($id)->toArray();
-        return $empresa['nombre'];
+        $empresa = CalEmpresaFilial::find($id)->toArray();
+        return $empresa['cal_nombre'];
     }
 }

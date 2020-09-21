@@ -1,15 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\AreaModel;
-use App\modulosModel;
-use App\FusUserLogin;
-use App\PerfilesModel;
-use App\LogBookMovements;
+use App\CalAreasPerfiles;
+use App\CalModulosAcceso;
+use App\CalUserLogin;
+use App\Calperfiles;
+use App\CalLogBookMovements;
 use Illuminate\Http\Request;
 
 use Maatwebsite\Excel\Facades\Excel;
-use App\Export\FusExport;
+// use App\Export\FusExport;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Http\Controllers;
-use App\Http\Controllers\FusSysadminController;
+// use App\Http\Controllers\FusSysadminController;
 use App\Http\Controllers\NotificacionesController;
 
 use Yajra\Datatables\Datatables;
@@ -51,18 +51,18 @@ class AreasController extends Controller
           'tipo' => 'vista',
           'id_user' => $idEmployee
           );
-          $bitacora = new LogBookMovements;
+          $bitacora = new CalLogBookMovements;
           $bitacora->guardarBitacora($data);
           return view('areas.listaareas');
      }
      public function anyData(){
-          $a = new AreaModel;
+          $a = new CalAreasPerfiles;
           $b = $a->listareatodas();
           return Datatables::of($b)->make(true);
      }
      public function storearea(Request $request){
           $area = $request->post('nombre');
-          $a = new AreaModel;
+          $a = new CalAreasPerfiles;
           $idEmployee = getIdUserLogin(Auth::user()->noEmployee);
         
           if($idEmployee == 0) {
@@ -79,7 +79,7 @@ class AreasController extends Controller
                   'id_user' => $idEmployee
               );
               
-              $bitacora = new LogBookMovements;
+              $bitacora = new CalLogBookMovements;
               $bitacora->guardarBitacora($data);
               
               return Response::json(true);
@@ -88,7 +88,7 @@ class AreasController extends Controller
           return Response::json(false);
      }
      public function editar(Request $request){
-          $a = new AreaModel;
+          $a = new CalAreasPerfiles;
           $id = $request->post('id');
           $nombre = $request->post('nombre');
           $idEmployee = getIdUserLogin(Auth::user()->noEmployee);
@@ -107,7 +107,7 @@ class AreasController extends Controller
                   'id_user' => $idEmployee
               );
               
-              $bitacora = new LogBookMovements;
+              $bitacora = new CalLogBookMovements;
               $bitacora->guardarBitacora($data);
               
               return Response::json(true);
@@ -116,7 +116,7 @@ class AreasController extends Controller
           return Response::json(false);
      }
      public function bloquear(Request $request){
-          $a = new AreaModel;
+          $a = new CalAreasPerfiles;
           $term = $request->post('id');
           $tipo = $request->post('tipo');
           $idEmployee = getIdUserLogin(Auth::user()->noEmployee);
@@ -129,8 +129,8 @@ class AreasController extends Controller
                $mov = 'Inactivo';
 
           }
-          // dd($term);
-          if($a->bloqueoarea($term,$mov) === true) {
+          
+          if($a->bloqueoarea($term, $mov) === true) {
               $msjDescription = 'Se ha puesto como '.$mov.' el área con id '.$request->post("id");
               
               $data = array(
@@ -140,7 +140,7 @@ class AreasController extends Controller
                   'id_user' => $idEmployee
               );
               
-              $bitacora = new LogBookMovements;
+              $bitacora = new CalLogBookMovements;
               $bitacora->guardarBitacora($data);
               
               return Response::json(true);

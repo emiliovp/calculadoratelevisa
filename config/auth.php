@@ -69,7 +69,7 @@ return [
             // 'driver' => 'eloquent',
             // 'model' => App\User::class,
             'driver' => 'ldap',
-            'model' => App\FUSUsersSessions::class,
+            'model' => App\CalUsersSessions::class,
         ],
 
         // 'users' => [

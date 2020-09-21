@@ -14,10 +14,8 @@ use Adldap\Laravel\Facades\Adldap;
 
 use Illuminate\Support\Facades\Crypt;
 
-use App\FUSUsersSessions;
-use App\FusUserLogin;
-use App\InterfaceLabora;
-use App\Comparelaboraconcilia;
+use App\CalUsersSessions;
+use App\CalUserLogin;
 // use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller    
@@ -40,7 +38,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/FusGeneral/fuses'; // Para cambiar la ruta después de loguearse
+    protected $redirectTo = 'home'; // Para cambiar la ruta después de loguearse
 
     /**
      * Create a new controller instance.
@@ -70,7 +68,7 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-        $FusUserLogin = new FusUserLogin;
+        $CalUserLogin = new CalUserLogin;
         $response = array();
         $credentials = $request->only('dominio', 'username', 'password', 'extensionAttribute15', '_token');
                 
@@ -141,7 +139,7 @@ class LoginController extends Controller
                 if($tipoEmpleado == "I"){
                     $response['tipoEmpleado'] = true;
                 } elseif($tipoEmpleado == "E"){
-                    if($FusUserLogin->getUserExisByUsername($username) == 1) {
+                    if($CalUserLogin->getUserExisByUsername($username) == 1) {
                         $response['tipoEmpleado'] = true; // Validar existencia en DB para dejarlo pasar
                     } else {
                         $response['status'] = false;
@@ -170,20 +168,20 @@ class LoginController extends Controller
         if ($auth === true) {
             // the user exists in the LDAP server, with the provided password
 
-            $FUSUsersSessions = new FUSUsersSessions;
-            // $user = $FUSUsersSessions->validateNumberEmployee($email);
+            $CalUsersSessions = new CalUsersSessions;
+            // $user = $CalUsersSessions->validateNumberEmployee($email);
             
             // if (!$user) {
                 // the user doesn't exist in the local database, so we have to create one
                 
                 // $user = new \App\User();
-            $user = $FUSUsersSessions;
+            $user = $CalUsersSessions;
             $user->email = $email;
             $user->name = $username;
             $user->noEmployee = $noEmployee;
             // $user->remember_token = $token;
 
-            if($FusUserLogin->getByUserRed($username, $noEmployee) === true) {
+            if($CalUserLogin->getByUserRed($username, $noEmployee) === true) {
                 // Session::put('userAdmin', 1);
                 // Auth::user()->UserAdmin = 1;
                 $user->useradmin = 1;
