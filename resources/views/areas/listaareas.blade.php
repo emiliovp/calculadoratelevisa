@@ -81,7 +81,7 @@ var buttonCommon = {
             {
                 render: function (data,type,row){
                     var html = '';
-                    if (row.estado =='Activo') {
+                    if (row.cal_estado =='Activo') {
                         html = '<div class="row">'+
                                 '<div class="col-md-12">'+
                                     '<button class="btn btn-danger btn-block mov-areas" id="bajaarea" name="bajaarea" data-movimiento="2" data-idarea="'+row.id+'">Desactivar</button>'+
@@ -120,10 +120,10 @@ var buttonCommon = {
     $(document).on("click", ".mov-areas", function(){
         var mov = $(this).attr("data-movimiento");
         if (mov == 2) {
-                    var accion = 'bloquear';
-                }else{
-                    var accion = 'desbloquear';
-                }
+            var accion = 'bloquear';
+        }else{
+            var accion = 'desbloquear';
+        }
         swal({
             title: '¿Esta seguro de '+accion+' el área?',
             text: 'Esta operación se podra revertir',
