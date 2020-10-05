@@ -36,12 +36,17 @@ class CalUserLogin extends Model
     }
 
     public function getIdByNameUser($user_red) {
-        $sql = CalUserLogin::select(['cal_perfiles.cal_modulos_acceso','cal_user_login.*', 
-        'cal_areas_perfiles.cal_area AS tipo_user', 'cal_perfiles.cal_areas_perfiles_id', 'cal_perfiles.cal_perfil'])
+        $sql = CalUserLogin::select([
+            'cal_perfiles.cal_modulos_acceso',
+            'cal_user_login.*', 
+            'cal_areas_perfiles.cal_area AS tipo_user', 
+            'cal_perfiles.cal_areas_perfiles_id', 
+            'cal_perfiles.cal_perfil'
+        ])
         ->join('cal_perfiles', 'cal_perfiles.id', '=', 'cal_user_login.cal_perfiles_id')
         ->leftJoin('cal_areas_perfiles', 'cal_areas_perfiles.id', '=', 'cal_perfiles.cal_areas_perfiles_id')
-        ->whereRaw('upper(cal_user_login.user_red) = upper("'.$user_red.'")')
-        ->where('cal_estado', '=', 1)
+        ->whereRaw('upper(cal_user_login.cal_user_red) = upper("'.$user_red.'")')
+        ->where('cal_user_login.cal_estado', '=', 1)
         ->first();
 
         $result = null;
@@ -126,10 +131,10 @@ class CalUserLogin extends Model
             'cal_user_login.cal_num_employee', 
             'cal_areas_perfiles.cal_area as tipo_user', 
             'cal_user_login.cal_estado',
-            'activedirectory_employees.displayname',
+            // 'activedirectory_employees.displayname',
             DB::raw('if(cal_perfiles.cal_areas_perfiles_id is null, cal_perfiles.cal_perfil, concat(cal_perfiles.cal_perfil," - ",cal_areas_perfiles.cal_area)) as area')
         ])
-        ->leftJoin("activedirectory_employees", DB::raw("UPPER(activedirectory_employees.samaccountname)"),"=", DB::raw("UPPER(cal_user_login.cal_user_red)"))
+        // ->leftJoin("activedirectory_employees", DB::raw("UPPER(activedirectory_employees.samaccountname)"),"=", DB::raw("UPPER(cal_user_login.cal_user_red)"))
         ->join('cal_perfiles', 'cal_perfiles.id', '=', 'cal_user_login.cal_perfiles_id')
         ->leftJoin('cal_areas_perfiles', 'cal_areas_perfiles.id', '=', 'cal_perfiles.cal_areas_perfiles_id')
         ->distinct()
@@ -151,10 +156,13 @@ class CalUserLogin extends Model
             'cal_user_login.cal_num_employee', 
             'cal_areas_perfiles.cal_area as tipo_user', 
             'cal_user_login.cal_estado',
-            'activedirectory_employees.displayname',
+            (function() {
+                
+            }),
+            // 'activedirectory_employees.displayname',
             DB::raw('if(cal_perfiles.cal_areas_perfiles_id is null, cal_perfiles.cal_perfil, concat(cal_perfiles.cal_perfil," - ",cal_areas_perfiles.cal_area)) as area')
         ])
-        ->leftJoin("activedirectory_employees", DB::raw("UPPER(activedirectory_employees.samaccountname)"),"=", DB::raw("UPPER(cal_user_login.cal_user_red)"))
+        // ->leftJoin("activedirectory_employees", DB::raw("UPPER(activedirectory_employees.samaccountname)"),"=", DB::raw("UPPER(cal_user_login.cal_user_red)"))
         ->join('cal_perfiles', 'cal_perfiles.id', '=', 'cal_user_login.cal_perfiles_id')
         ->leftJoin('cal_areas_perfiles', 'cal_areas_perfiles.id', '=', 'cal_perfiles.cal_areas_perfiles_id')
         ->distinct()

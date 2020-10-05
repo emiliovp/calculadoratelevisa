@@ -4,7 +4,7 @@ namespace App\Http\controllers;
 use App\FusConfiguracionesAutorizaciones;
 use App\FUSSysadminWtl;
 use App\reporteseguimiento;
-use App\LogBookMovements;
+use App\CalLogBookMovements;
 use App\Applications;
 use App\Http\controllers;
 use Illuminate\Database\Eloquent\Model;
@@ -38,7 +38,7 @@ class reportesController extends Controller
             'id_user' => $idEmployee
         );
         
-        $bitacora = new LogBookMovements;
+        $bitacora = new CalLogBookMovements;
         $bitacora->guardarBitacora($data);
 
         return view('reportes.reportesServicios');
@@ -65,13 +65,14 @@ class reportesController extends Controller
             'id_user' => $idEmployee
         );
         
-        $bitacora = new LogBookMovements;
+        $bitacora = new CalLogBookMovements;
         $bitacora->guardarBitacora($data);
 
         $dataFormInf = new reporteseguimiento;
-        $dataForm = $dataFormInf->infoParaForm();
+        // $dataForm = $dataFormInf->infoParaForm();
         
-        return view('reportes.reporteseguimiento')->with(["dataForm" => $dataForm]);
+        // return view('reportes.reporteseguimiento')->with(["dataForm" => $dataForm]);
+        return view('reportes.reporteseguimiento');
     }
 
     public function datareporteseguimiento() {

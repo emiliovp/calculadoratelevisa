@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 use Adldap\Laravel\Facades\Adldap;
-use App\CalCalLogBookMovements;
+use App\CalLogBookMovements;
 use App\CalUserLogin;
 use App\Calperfiles;
 use Yajra\Datatables\Datatables;
@@ -44,8 +44,8 @@ class UserController extends Controller
         if(!isset($idEmployee)) {
             $idEmployee = null;
         }
-        $a = new CalUserLogin;
-        if ($idEmployee['perfil'] == 'root') {
+        
+        if ($idEmployee['cal_perfil'] == 'root') {
             $data = $a->getUserActiveroot($idEmployee['tipo_user']);
         }else {
             $data = $a->getUserActive($idEmployee['tipo_user']);
@@ -74,13 +74,13 @@ class UserController extends Controller
     }
     public function setusuario(){
         $a = new CalUserLogin;
-        $b = new PerfilesModel;
+        $b = new Calperfiles;
         $idEmployee = $a->getIdByNameUser(Auth::user()->email);
 
-        if ($idEmployee['perfil'] == 'root') {
-            $perfiles = $b->perfilesByArea($idEmployee['fus_areas_perfiles_id'], $idEmployee['perfil']);
+        if ($idEmployee['cal_perfil'] == 'root') {
+            $perfiles = $b->perfilesByArea($idEmployee['cal_areas_perfiles_id'], $idEmployee['cal_perfil']);
         }else {
-            $perfiles = $b->perfilesByArea($idEmployee['fus_areas_perfiles_id'], $idEmployee['perfil']);
+            $perfiles = $b->perfilesByArea($idEmployee['cal_areas_perfiles_id'], $idEmployee['cal_perfil']);
         }
         // dd($idEmployee);
         // if(!isset($idEmployee)) {

@@ -42,17 +42,17 @@ class Calperfiles extends Model
     public function perfilesByArea($area,$perfil){
         $this->area = $area;
         $this->perf = $perfil;
-        return Calperfiles::select(['fus_perfiles.id',
+        return Calperfiles::select(['cal_perfiles.id',
         // 'perfil',
-        DB::raw("if (fus_perfiles.fus_areas_perfiles_id is null, perfil, concat(perfil,' / ',fus_areas_perfiles.area)) as perfil"),
-        'fus_perfiles.estado',   
-        'fus_perfiles.modulos_acceso',
-        'fus_perfiles.fus_areas_perfiles_id'])
-        ->leftJoin('fus_areas_perfiles', 'fus_areas_perfiles.id', '=', 'fus_perfiles.fus_areas_perfiles_id')
+        DB::raw("if (cal_perfiles.cal_areas_perfiles_id is null, cal_perfil, concat(cal_perfil,' / ',cal_areas_perfiles.cal_area)) as perfil"),
+        'cal_perfiles.cal_estado',   
+        'cal_perfiles.cal_modulos_acceso',
+        'cal_perfiles.cal_areas_perfiles_id'])
+        ->leftJoin('cal_areas_perfiles', 'cal_areas_perfiles.id', '=', 'cal_perfiles.cal_areas_perfiles_id')
         ->where(function($query) {
             if($this->perf != null && $this->perf != 'root'){
-                $query->where('fus_perfiles.perfil', '<>', 'root');
-                $query->where('fus_perfiles.fus_areas_perfiles_id','=', $this->area);
+                $query->where('cal_perfiles.cal_perfil', '<>', 'root');
+                $query->where('cal_perfiles.cal_areas_perfiles_id','=', $this->area);
             }else{
                 $query->whereRaw('1 = 1');
             }

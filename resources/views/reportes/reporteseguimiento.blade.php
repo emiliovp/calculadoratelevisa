@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Reporte de seguimiento de FUS-e
+                    Reporte de auditoria
                 </div>
                 <div class="card-body">
                     <!-- <div class="container"> -->
@@ -66,9 +66,9 @@
                                     <div class="col-md-10">
                                         <select data-field="tipofus" class="form-control multiselectvalidacion" multiple name="tipo_fus" id="tipo_fus">
                                             <option id="opt-tipofus" value="" selected>Ninguna</option>
-                                            @foreach($dataForm["tipofus"] AS $key => $value)
-                                            <option value="{{$value['tipo_fus']}}">{{$value['tipo_fus']}}</option>
-                                            @endforeach
+                                            <!-- @ foreach($dataForm["tipofus"] AS $key => $value)
+                                            <option value="{ {$value['tipo_fus']}}">{ {$value['tipo_fus']}}</option>
+                                            @ endforeach -->
                                         </select>
                                     </div>
                                 </div>
@@ -81,9 +81,9 @@
                                     <div class="col-md-10">
                                         <select data-field="tipomov" class="form-control multiselectvalidacion" multiple name="tipo_movimiento" id="tipo_movimiento">
                                             <option id="opt-tipomov" value="" selected>Ninguna</option>
-                                            @foreach($dataForm["tipomovimiento"] AS $key => $value)
-                                            <option value="{{$value['tipo_movimiento']}}">{{$value['tipo_movimiento']}}</option>
-                                            @endforeach
+                                            <!-- @ foreach($dataForm["tipomovimiento"] AS $key => $value)
+                                            <option value="{ {$value['tipo_movimiento']}}">{ {$value['tipo_movimiento']}}</option>
+                                            @ endforeach -->
                                         </select>
                                     </div>
                                 </div>
@@ -101,9 +101,9 @@
                                     <div class="col-md-10">
                                         <select data-field="aplicacion" class="form-control multiselectvalidacion" multiple name="aplicacion" id="aplicacion">
                                             <option id="opt-aplicacion" value="" selected>Ninguna</option>
-                                            @foreach($dataForm["apps"] AS $key => $value)
-                                            <option value="{{$value['app']}}">{{$value['app']}}</option>
-                                            @endforeach
+                                            <!-- @ foreach($dataForm["apps"] AS $key => $value)
+                                            <option value="{  {$value['app']} }">{  {$value['app']} }</option>
+                                            @ endforeach -->
                                         </select>
                                     </div>
                                 </div>

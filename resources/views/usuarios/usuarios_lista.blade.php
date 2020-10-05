@@ -27,7 +27,7 @@
                                 <thead>
                                     <tr>
                                         <th>Número de empleado</th>
-                                        <th>Nombre</th>
+                                        <!-- <th>Nombre</th> -->
                                         <th>Usuario de red</th>
                                         <th>Área</th>
                                         <th>Eliminar</th>
@@ -80,10 +80,10 @@ Swal.fire({
         serverSide: true,
         ajax: '{!! route("listusers") !!}',
         columns: [
-            {data: 'num_employee', name: 'num_employee'}, 
-            {data: 'displayname',  name: 'displayname'},
-            {data: 'user_red',  name: 'user_red'},
-            {data: 'area',  name: 'area'},
+            {data: 'cal_num_employee', name: 'cal_num_employee'}, 
+            // {data: 'displayname',  name: 'displayname'},
+            {data: 'cal_user_red',  name: 'cal_user_red'},
+            {data: 'tipo_user',  name: 'tipo_user'},
             {
                 render: function (data,type,row){
                     var html = '';

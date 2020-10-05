@@ -32,7 +32,7 @@ class CalUsersSessions extends Authenticatable
     public function validateDoubleSession() {
         $query = CalUsersSessions::where([
             'email' => Auth::user()->email,
-            'created_at' => DB::raw('(SELECT MAX(created_at) FROM fus_users_sessions WHERE email = "'.Auth::user()->email.'")')
+            'created_at' => DB::raw('(SELECT MAX(created_at) FROM cal_user_sessions WHERE email = "'.Auth::user()->email.'")')
         ])
         ->first();
         
