@@ -18,34 +18,34 @@ class LDAPController extends Controller
     public function index() {
         // $password = 'D3s@rroll02019';
         $usernamesoi = 'sysadminfuse';
-        $passwordsoi = 'eyJpdiI6ImF5bjVkQ2dtU1QzUldWd1wvWlU5ekV3PT0iLCJ2YWx1ZSI6InZvQ0MxaEIrM1lOQlJrQ3Z1XC8wdUFnPT0iLCJtYWMiOiIyYjQwZWVmN2YwMTlmOTVmZGJiNTU1MmQ1N2FhNjU2ZjA5NGZmNjNjN2RhZjZjN2YwNmUyYjJhZDFlNzA4MWI4In0=';
+        $passwordsoi = 'eyJpdiI6Ik5VVENIeHNxOW9hS1NnZXhxXC91ZzJBPT0iLCJ2YWx1ZSI6ImwzdjBGYzYxN3NhWnZvQWVKYTBOTXc9PSIsIm1hYyI6ImVjMmY1MThjNTY2MjJmNDA2MjdhNTBiMDRiZDBjZTBkNjJmYjFjNTFlYmQxNzg3OTk5NTQwMjU3Y2YzZjlkMGYifQ==';
 
         $username = 'sysadmindesarro';
-        $password = 'eyJpdiI6IlByczFoMUJXZlB3SjhwQzh0WjZmcUE9PSIsInZhbHVlIjoiTHJtY2VXVG9oTHpsWU83cVVNeHB1dz09IiwibWFjIjoiNGMxNDY4YTMwMmNkMjMwMGNkNjY2NzBlNzI4YWIyYTkyODE2MzU4ZDI5MzBiYzIyMmQyZDdmNjQ5ZWRhNGUwZiJ9';
+        $password = 'eyJpdiI6Im8yUmJcL0h6N1E3UWNMVGJjM0pPQVlRPT0iLCJ2YWx1ZSI6IkU4b3BCKzQxREw1c3N2a0YyVDRObWc9PSIsIm1hYyI6IjI0NzBmYTdmZGExOTQyM2FkM2NkMTFkZGM2Njc5NzY5N2RkYTI2MmM5YjUzODkyM2Y4ZDRlMTRjN2JlYjczZGYifQ==';
         
         try {
             if (Adldap::getProvider('soi')->auth()->attempt($usernamesoi, $passwordsoi, $bindAsUser = true)) {
                 // $resultscorp = Adldap::getProvider('default')->search()->users()->limit(5)->get(); // Por cantidades
-                $resultssoi = Adldap::getProvider('soi')->search()->where('samaccountname', '=', 'dsanchezl')->get(); // Por usuario mcesarg
+                $resultssoi = Adldap::getProvider('soi')->search()->where('samaccountname', '=', 'hmartinezro')->get(); // Por usuario mcesarg
             } else {
                 $resultssoi = 'Failed SOI';
             }
             
             if (Adldap::getProvider('default')->auth()->attempt($username, $password, $bindAsUser = true)) {
                 // $resultscorp = Adldap::getProvider('default')->search()->users()->limit(5)->get(); // Por cantidades
-                $resultscorp = Adldap::getProvider('default')->search()->where('samaccountname', '=', 'dsanchezl')->get(); // Por usuario mcesarg
+                $resultscorp = Adldap::getProvider('default')->search()->where('samaccountname', '=', 'hmartinezro')->get(); // Por usuario mcesarg
             } else {
                 $resultscorp = 'Failed CORP';
             }
             if (Adldap::getProvider('filial')->auth()->attempt($username, $password, $bindAsUser = true)) {
                 // $resultsfilial = Adldap::getProvider('filial')->search()->users()->limit(5)->get(); // Por cantidades
-                $resultsfilial = Adldap::getProvider('filial')->search()->where('samaccountname', '=', 'dsanchezl')->get(); // Por usuario mcesarg
+                $resultsfilial = Adldap::getProvider('filial')->search()->where('samaccountname', '=', 'hmartinezro')->get(); // Por usuario mcesarg
             } else {
                 $resultsfilial = 'Failed FILIAL';
             }
             if (Adldap::getProvider('tsm')->auth()->attempt($username, $password, $bindAsUser = true)) {
                 // $resultstsm = Adldap::getProvider('tsm')->search()->users()->limit(5)->get(); // Por cantidades
-                $resultstsm= Adldap::getProvider('tsm')->search()->where('samaccountname', '=', 'dsanchezl')->get(); // Por usuario mcesarg
+                $resultstsm= Adldap::getProvider('tsm')->search()->where('samaccountname', '=', 'hmartinezro')->get(); // Por usuario mcesarg
             } else {
                 $resultstsm = 'Failed TSM';
             }
