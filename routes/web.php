@@ -196,3 +196,13 @@ Route::group(['prefix' => 'areas'], function(){
     Route::post('/editararea', 'AreasController@editar')->name('editarea');
     Route::post('/bloqueararea', 'AreasController@bloquear')->name('bloqueoarea');
 });
+Route::group(['prefix' => 'solicitud'], function(){
+    // Route::get('/fus_home', 'FusWintelController@index')->name('homefus')->middleware('reading');
+    Route::get('index', 'SolicitudController@index')->name('solicitud.encabezado'); //->middleware('doublesession');
+    Route::get('autocomplete', ['uses'=>'SolicitudController@autocomplete'])->name('sol.autocomplete');
+    Route::get('autocomplete2', ['uses'=>'SolicitudController@autocomplete2'])->name('sol.ad');
+    Route::post('/guardar', 'SolicitudController@stored')->name('sol.insertar_sol');
+    /*Route::get('/ver_fuses', 'FusWintelController@lista')->name('verfus');
+    Route::get('autocomplete', ['uses'=>'FusWintelController@autocomplete'])->name('fus.autocomplete');
+    Route::get('validuser', ['uses'=>'FusWintelController@validaruser'])->name('fus.validuser');*/
+});

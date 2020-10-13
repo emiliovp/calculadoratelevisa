@@ -16,7 +16,7 @@
             </p>
         @else
             <p>
-                Dar clic en el siguiente enlace para poder autorizar o rechazar el fus #{{$id}} .
+                Dar clic en el siguiente enlace para poder autorizar o rechazar la solicitud con folio #{{$id}} .
             </p>
             <p>
                 @if(isset($idRelConf))

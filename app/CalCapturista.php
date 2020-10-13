@@ -20,12 +20,12 @@ class CalCapturista extends Model
     public function registrarCapturista($emp)
     {
         $resp = CalCapturista::select('id','cal_no_empleado','cal_user_red')
-        ->where("no_empleado", '=', $emp->noEmployee)
+        ->where("cal_no_empleado", '=', $emp->noEmployee)
         ->get()
         ->toArray();
         if (count($resp) == 0) {
             $cap = new CalCapturista;
-            $cap->no_empleado = $emp->noEmployee;
+            $cap->cal_no_empleado = $emp->noEmployee;
             $cap->cal_user_red = $emp->name;
             $cap->save();
             $data = $cap->id;

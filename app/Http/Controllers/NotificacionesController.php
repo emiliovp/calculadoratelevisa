@@ -14,7 +14,7 @@ use App\Mail\NotFinalWtl;
 use App\Mail\notificacionAsignacionAutorizacion;
 use App\Http\Controllers\FusAutorizacionesController;
 use App\LogBookMovements;
-use App\FUSSysadminWtl;
+use App\SolicitudModelo;
 use App\RelConfigurationfussyswtl;
 use App\ObservacionPorRechazo;
 use App\FusConfigAutOtro;
@@ -30,11 +30,9 @@ class NotificacionesController extends Controller
         $this->ip_address_client = getIpAddress();// EVP ip para bitacora
     }
     public function sendMailNotificacionSolicitante($id){
-        $getFus = new FUSSysadminWtl;
-        $fus = $getFus->getFusById($id);
-        $getFus = new FUSSysadminWtl;
-        $fus = $getFus->getFusById($id);
-         switch ($fus['tipo_fus']) {
+        $getFus = new SolicitudModelo;
+        $fus = $getFus->getSolById($id);
+        /*switch ($fus['tipo_fus']) {
             case 0:
                 $tipo_fus = 'Aplicaciones';
                 break;
@@ -56,19 +54,20 @@ class NotificacionesController extends Controller
             case 6:
                 $tipo_fus = 'Usuario de Acceso a la Red Corporativa';
                 break;
-            }
-        $correosFus = $fus['correo_corporativo'];
+            }*/
+        $tipo_fus = 'Solicitud de equipo de computo';
+        $correosFus = $fus['cal_correo'];
         $emails = array($correosFus);
         $mail = Mail::to($emails);
         $mail->send(new AutoSolGeneral($tipo_fus, $id));
-        $data = array(
+        /*$data = array(
             'ip_address' => $this->ip_address_client, 
-            'description' => 'Envío de correo de notificacion al solicitante del FUS #'.$id,
+            'description' => 'Envío de correo de notificacion al solicitante #'.$id,
             'tipo' => 'sendMail',
             'id_user' => 1
         );
         $bitacora = new LogBookMovements;
-        $bitacora->guardarBitacora($data); 
+        $bitacora->guardarBitacora($data);*/ 
     }
 
     public function notificacionAsginacionConfig($data) {
@@ -88,9 +87,9 @@ class NotificacionesController extends Controller
     }
 
     public function sendMailAutorizacionJefe($id, $jefeOAut) {
-        $getFus = new FUSSysadminWtl;
-        $fus = $getFus->getFusById($id);
-        switch ($fus['tipo_fus']) {
+        $getFus = new SolicitudModelo;
+        $fus = $getFus->getSolById($id);
+        /*switch ($fus['tipo_fus']) {
             case 0:
                 $tipo_fus = 'Aplicaciones';
                 break;
@@ -112,13 +111,14 @@ class NotificacionesController extends Controller
             case 6:
                 $tipo_fus = 'Usuario de Acceso a la Red Corporativa';
                 break;
-        }
+        }*/
+        $tipo_fus = 'Solicitud de equipo de computo';
         switch ($jefeOAut) {
             case 1:
-                $correosFus = $fus['correo_jefe'];
+                $correosFus = $fus['cal_correo_jefe'];
                 break;
             case 2:
-                $correosFus = $fus['aut_correo'];
+                $correosFus = $fus['cal_aut_correo'];
                 break;
         }
 
@@ -131,7 +131,7 @@ class NotificacionesController extends Controller
         // $jefeOAut = 4 Autorizador Otros
         $mail->send(new AutoAppJefeAut($tipo = 1, $id, $jefeOAut, $tipo_fus));
 
-        $data = array(
+        /*$data = array(
             'ip_address' => $this->ip_address_client, 
             'description' => 'Envío de correo de autorización del FUS #'.$id,
             'tipo' => 'sendMail',
@@ -139,7 +139,7 @@ class NotificacionesController extends Controller
         );
 
         $bitacora = new LogBookMovements;
-        $bitacora->guardarBitacora($data);   
+        $bitacora->guardarBitacora($data);*/  
     }
 
     public function sendMailRechazoSolicitante($idFus, $idObse, $jefeOAut = null, $rechazoApp = null) {

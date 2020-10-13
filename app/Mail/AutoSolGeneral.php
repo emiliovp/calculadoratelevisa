@@ -32,8 +32,8 @@ class AutoSolGeneral extends Mailable
      */
     public function build()
     {
-        return $this->from('sysadmin@televisa.com.mx')
+        return $this->from('sysadmindesarro@televisa.com.mx')
                 ->view('mails.notsol', ['id' => $this->id, 'fus'=>  $this->fus])
-                ->subject ('CIFRADOTVSA - Notificación de Alta de FUS-e de '.$this->fus.' Folio #'.$this->id);
+                ->subject ('CIFRADOTVSA - Notificación de Alta de '.$this->fus.' Folio #'.$this->id);
     }
 }

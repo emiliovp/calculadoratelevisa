@@ -8,7 +8,7 @@
     </head>
     <body>
         <p>
-           Se ha dado de alta un nuevo FUS en cual usted ha sido asignado como solicitante, en la siguiente URL podra visualizarlo
+           Se ha dado de alta una solicitud de equipo en cual usted ha sido asignado como solicitante, en la siguiente URL podra visualizarlo
         </p>
         <a href="{{url('/fus/showfus/'.$id)}}">{{url('/fus/showfus/'.$id)}}</a>
     </body>

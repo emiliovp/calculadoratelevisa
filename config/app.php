@@ -41,6 +41,12 @@ return [
     /*
     'jerarquias' => array('GTE.','GERENTE','COORD.','COORDINADOR','DIR.','DIRECTOR','DIRECTORA','VP.','VICEPRESIDENTE'),*/
     'jerarquias' => array('Gte', 'Gte.','Gerente', 'GTE', 'GTE.', 'GERENTE', 'Coord', 'Coord.','COORD','COORD.','Coordinador','COORDINADOR','Coordinadora', 'COORDINADORA','Subdir', 'Subdir.','SUBDIR','SUBDIR.','SUBDIRECTOR', 'SUBDIRECTORA','Sub-Director','SUB-DIRECTOR', 'Sub-Directora','SUB-DIRECTORA','DIR', 'DIR.', 'Director', 'Directora', 'DIRECTOR','DIRECTORA', 'VP','VP.','Vicepresidente','VICEPRESIDENTE','Presidente','PRESIDENTE'),
+    /*configuracion de conexion codeac*/
+    'codeac' => array('ip' => "10.7.200.221", 
+        'port' => '1700', 
+        'namedb' => 'eyJpdiI6IlVGWHQzK1A0NmxNZmloNlR0aVh5ZVE9PSIsInZhbHVlIjoiUkFxWm9iU3hHYzFqZ0FuXC9HVHJFYlE9PSIsIm1hYyI6ImJlNjA2MTJlNTY0MmJlODBkODg0NWQ4ZDNjYTY3ODg0NDYxZmQ2ZTdjYjllNjU3MGI5ZjA4MGZkM2E0NGE3NGMifQ==', 
+        'username' => 'eyJpdiI6IitUckVwU3hFVU1RY2RyXC8yMW5HSE1BPT0iLCJ2YWx1ZSI6Imt2eWl5ZVBpRjQ1NTJ4TjVzT08wekE9PSIsIm1hYyI6ImRlMjIxNmFlMmYzYmFkNjQ1Zjg1Zjg1YzFjNzEzMGJkZTA2ZDhmNGM1YTgxYjhhY2Y5ZjE3MmEyMWViODZkNjUifQ==', 
+        'pass' => 'eyJpdiI6InMyQm5MYXVCZVBSTmt2WG94a0JqTmc9PSIsInZhbHVlIjoidnplK1FIaDdLNFJHczdVY0RQdEx2ejFaQzhkQ3JrZlZkV0liZXo4bENXaz0iLCJtYWMiOiI5NTc1NTMyNDIwMjdmNzRhYzM4MGUyZjA1MDQ0M2I1NGIyMWMxMjE2ZTllZThjMjJmNGZhZjAxZjZjNTM1YzkxIn0='),
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

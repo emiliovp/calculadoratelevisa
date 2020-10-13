@@ -38,6 +38,6 @@ class AutoAppJefeAut extends Mailable
     {
         return $this->from('sysadmin@televisa.com.mx')
                 ->view('mails.autorizacionjefe', ['tipo' => $this->tipo, 'id' => $this->id, 'jefeOAut' => $this->jefeOAut, 'fus'=>  $this->fus, 'tipo_fus' => $this->fus])
-                ->subject ('CIFRADOTVSA - Solicitud de autorización para FUS-e de '.$this->fus.' Folio #'.$this->id);
+                ->subject ('CIFRADOTVSA - Solicitud de autorización para '.$this->fus.' Folio #'.$this->id);
     }
 }
