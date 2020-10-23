@@ -13,7 +13,8 @@ use App\FUSSysadminWtl;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-class FusSysadminController extends Controller
+
+class CalculadoraWaasController extends Controller
 {
     public $jerarquias;
     public $ip_address_client;

@@ -98,9 +98,9 @@ class UserController extends Controller
         ]);
         $data = array();
         $data[] = array(
-            'num_employee' => $request->post('n_empleado'),
-            'user_red' => $request->post('u_red'),
-            'fus_perfiles_id' => $request->post('perfil')
+            'cal_num_employee' => $request->post('n_empleado'),
+            'cal_user_red' => $request->post('u_red'),
+            'cal_perfiles_id' => $request->post('perfil')
         );
         $idEmployee = getIdUserLogin(Auth::user()->noEmployee);
         

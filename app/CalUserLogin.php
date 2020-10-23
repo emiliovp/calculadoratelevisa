@@ -156,9 +156,9 @@ class CalUserLogin extends Model
             'cal_user_login.cal_num_employee', 
             'cal_areas_perfiles.cal_area as tipo_user', 
             'cal_user_login.cal_estado',
-            (function() {
+            // (function() {
                 
-            }),
+            // }),
             // 'activedirectory_employees.displayname',
             DB::raw('if(cal_perfiles.cal_areas_perfiles_id is null, cal_perfiles.cal_perfil, concat(cal_perfiles.cal_perfil," - ",cal_areas_perfiles.cal_area)) as area')
         ])
@@ -180,7 +180,7 @@ class CalUserLogin extends Model
     public function bajaUsr($val){
         date_default_timezone_set('America/Mexico_City');
         $data = CalUserLogin::find($val);
-        $data->estatus = 3;
+        $data->cal_estado = 3;
         $data->updated_at = date('yy-m-d H:m:s');
         $data->save();
     }

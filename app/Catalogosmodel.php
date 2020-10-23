@@ -121,6 +121,7 @@ class Catalogosmodel extends Model
                     return Catalogosmodel::where('cat_nombre', '=', $catalogo)
                     ->join('cat_opciones', 'cat_opciones.catalogos_id', '=', 'catalogos.id')
                     ->where('cat_opciones_id', '=', $idPrincipalJerarquia->id)
+                    ->where('cat_opciones.cat_op_estatus', '=', 1)
                     ->orderby('cat_opciones.cat_op_descripcion', 'asc')
                     ->get()
                     ->toArray();
@@ -136,6 +137,7 @@ class Catalogosmodel extends Model
                     return Catalogosmodel::where('cat_nombre', '=', $catalogo)
                     ->join('cat_opciones', 'cat_opciones.catalogos_id', '=', 'catalogos.id')
                     ->where('cat_opciones_id', '=', $idPrincipalJerarquia->id)
+                    ->where('cat_opciones.cat_op_estatus', '=', 1)
                     ->orderby('cat_opciones.cat_op_descripcion', 'asc')
                     ->get()
                     ->toArray();
@@ -146,6 +148,7 @@ class Catalogosmodel extends Model
             return Catalogosmodel::where('cat_nombre', '=', $catalogo)
             ->join('cat_opciones', 'cat_opciones.catalogos_id', '=', 'catalogos.id')
             ->where('cat_opciones_id', '=', $idCatPrin)
+            ->where('cat_opciones.cat_op_estatus', '=', 1)
             ->orderby('cat_opciones.cat_op_descripcion', 'asc')
             ->get()
             ->toArray();
@@ -155,6 +158,7 @@ class Catalogosmodel extends Model
             ->join('rel_catopciones_configuracionesautorizaciones', 'rel_catopciones_configuracionesautorizaciones.cat_opciones_id', '=', 'cat_opciones.id')
             ->join('fus_configuracion_autorizaciones', 'fus_configuracion_autorizaciones.id', '=', 'rel_catopciones_configuracionesautorizaciones.fus_configuracion_autorizaciones_id')
             ->whereRaw('fus_configuracion_autorizaciones.rol_mod_rep = (select rol_mod_rep from fus_configuracion_autorizaciones where id ='.$idAut.')')
+            ->where('cat_opciones.cat_op_estatus', '=', 1)
             ->groupBy('cat_opciones.cat_op_descripcion')
             ->orderby('cat_opciones.cat_op_descripcion', 'asc')
             ->get()
@@ -163,6 +167,7 @@ class Catalogosmodel extends Model
             return Catalogosmodel::where('cat_nombre', '=', $catalogo)
             ->join('cat_opciones', 'cat_opciones.catalogos_id', '=', 'catalogos.id')
             ->where('catalogos.applications_id', '=', $idapp)
+            ->where('cat_opciones.cat_op_estatus', '=', 1)
             ->orderby('cat_opciones.cat_op_descripcion', 'asc')
             ->get()
             ->toArray();

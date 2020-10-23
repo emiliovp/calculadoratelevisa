@@ -66,15 +66,6 @@ Route::group(['prefix' => 'otrasconfiguraciones'], function(){
     // Route::post('/busqueda', 'ConfigautorizacionesController@searchEmployeeLabora')->name('searchautorizador');
 });
 
-Route::group(['prefix' => 'fusaplicaciones'], function(){
-    Route::get('/seleccionapps', 'FusSysadminController@index')->name('seleccionfusapps')->middleware('doublesession');
-    Route::get('/solicitud', 'FusSysadminController@formRequest')->name('solicitudfusapps');
-    Route::post('/solicitud', 'FusSysadminController@formRequest')->name('solicitudfusapps');
-    Route::post('/guardar', 'FusSysadminController@store')->name('storefusapp');
-    Route::post('/busqueda', 'FusSysadminController@getConfiguracionAutorizaciones')->name('getconfigsauto');
-    Route::post('/busquedacatalogo', 'FusSysadminController@getCatalogoYOpciones')->name('getcatalogo');
-});
-
 Route::group(['prefix' => 'fus'], function(){
     Route::get('/showfus/{id}', 'FusController@showFus')->name('showfus')->middleware('doublesession');
     Route::get('/showfus/{id}/{tipo}/{jefeOAut}', 'FusController@showFus')->name('showfusmail')->middleware('doublesession');

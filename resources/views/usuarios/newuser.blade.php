@@ -89,7 +89,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12 text-right">
-                                <a class="btn btn-warning" style="color:#FFFFFF;" href="{{ route('ListaUsuarios') }}">Cancelar</a>
+                                <a class="btn btn-warning" style="color:#FFFFFF;" href="{{ route('ListaUsuarios') }}">Regresar</a>
                                 <!-- <button type="button" class="btn btn-success" id="guardar">Cancelar</button> -->
                                <!-- <button type="submit" class="btn btn-success" id="guardar">Guardar</button>-->
                                <input type="button" value="Guardar" id="enviar" class="btn btn-success" />
